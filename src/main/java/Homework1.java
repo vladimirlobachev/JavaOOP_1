@@ -29,7 +29,7 @@ public class Homework1 {
     
     public static void main(String[] args) {
         int[] vals = readFile();
-        long mult = vals[0] * vals[1];
+        int mult = vals[0] * vals[1];
         writeFile(mult);
     }
 }
