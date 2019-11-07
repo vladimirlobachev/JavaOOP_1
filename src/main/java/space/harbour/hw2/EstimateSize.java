@@ -8,7 +8,7 @@ public class EstimateSize {
 
     public static long getInUse() {
     	long inUse = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-	    return  inUse
+	    return  inUse;
 	}
 
     public static void gcJob() {
@@ -44,7 +44,7 @@ public class EstimateSize {
     public static void main(String[] args) {
 
 		gcJob();
-		
+
 		System.out.println("Mem in use: " + getInUse());
 
 		declareInt(getInUse());
