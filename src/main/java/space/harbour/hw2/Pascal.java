@@ -1,7 +1,7 @@
 public final class Pascal {
 
     private Pascal() {
-    	// stop thworing errors
+        // stop thworing errors
 	}
 
     private static int getArg(String[] args) {
@@ -28,7 +28,7 @@ public final class Pascal {
 		return res;
 	}
 
-    public static final void printPascal(final int n) {
+    public static void printPascal(final int n) {
 
 		for (int i = 0; i < n; i++) {
 			String res = "";

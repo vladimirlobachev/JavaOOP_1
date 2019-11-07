@@ -6,22 +6,22 @@ import java.util.Scanner;
 public final class Slang {
 
     private Slang() {
-    	// stop
+        // stop
     }
 
-    public static String fixAbbreviations(final Map<String, String> abbrs, final String str) {
-		for (String key:abbrs.keySet()) {
-			if (str.contains(key)) {
-				str = str.replace(key, abbrs.get(key));
+    public static String fixAbbreviation(final Map<String, String> m, String st) {
+		for (String key:m.keySet()) {
+			if (st.contains(key)) {
+				st = str.replace(key, m.get(key));
 			}
 		}
 		return str;
 	}
 
-    public static final String fixSmiles(final Map<String, String> smiles, final String str) {
+    public static String fixSmile(final Map<String, String> m, String st) {
 		for (String key:smiles.keySet()) {
-			if (str.contains(key)) {
-				str = str.replace(key, smiles.get(key));
+			if (st.contains(key)) {
+				st = st2.replace(key, m.get(key));
 			}
 		}
 		return str;
