@@ -1,19 +1,20 @@
-import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.List;
 
 
-public class MyHashMap<K, V> implements Map<K, V> {
+public final class MyHashMap<K, V> implements Map<K, V> {
+
+	private static final int SIZE = 32;
 
     class Element<K, V> {
-        K key;
-        V value;
+        private K key;
+        private V value;
     }
 
 
-    private List<Element<K, V>>[] storage = new List[32];
+    private List<Element<K, V>>[] storage = new List[SIZE];
 
     @Override
     public Set<Entry<K, V>> entrySet() {
