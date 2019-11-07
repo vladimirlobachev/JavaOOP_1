@@ -19,8 +19,8 @@ public final class Slang {
     }
 
     public static String fixSmile(final Map<String, String> m, final String s) {
-        // look I made the above line exactly 80 characters. Code looks much 
-        // more convenient with those argument names. isnt it. 
+        // look I made the above line exactly 80 characters. Code looks much
+        // more convenient with those argument names. doesnt it.
         for (String key:smiles.keySet()) {
             if (s.contains(key)) {
                 s = s.replace(key, m.get(key));
