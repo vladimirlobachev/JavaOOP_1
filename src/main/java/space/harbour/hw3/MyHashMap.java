@@ -6,7 +6,8 @@ import java.util.List;
 
 public final class MyHashMap<K, V> implements Map<K, V> {
 
-	private static final int SIZE = 32;
+    private static final int SIZE = 32;
+    private static final int SHIFT = 27;
 
     class Element<K, V> {
         private K key;
@@ -53,14 +54,14 @@ public final class MyHashMap<K, V> implements Map<K, V> {
 
     @Override
     public void clear() {
-        storage = new List[32];
+        storage = new List[SIZE];
     }
 
     @Override
-    public void putAll(final Map<? extends K,? extends V> map) {}
+    public void putAll(final Map<? extends K, ? extends V> map) { }
 
     @Override
-    public V remove(Object key) {
+    public V remove(final Object key) {
         try {
             for (List<Element<K, V>> list: storage) {
                 for (Element<K, V> element: list) {
@@ -78,7 +79,7 @@ public final class MyHashMap<K, V> implements Map<K, V> {
 
     @Override
     public V put(final K key, final V value) {
-        List<Element<K, V>> list = storage[key.hashCode() >> 27];
+        List<Element<K, V>> list = storage[key.hashCode() >> SHIFT];
 
         //Element element = new Element(key, value);
         //list.add(element);
@@ -157,7 +158,7 @@ public final class MyHashMap<K, V> implements Map<K, V> {
 
     public static void main(final String[] args) {
         MyHashMap<Integer, Integer> mp = new MyHashMap<Integer, Integer>();
-        System.out.println(mp.put(1,1));
+        System.out.println(mp.put(1, 1));
         System.out.println(mp.size());
 
     }
