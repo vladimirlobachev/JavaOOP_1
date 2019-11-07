@@ -1,4 +1,4 @@
-import java.util.HashMap; 
+import java.util.HashMap;
 import java.util.Map;
 
 import java.util.Scanner;
@@ -7,7 +7,7 @@ public class Slang {
 
 
 
-	public static String fixAbbreviations(Map<String, String> abbrs, String str) {
+	public static final String fixAbbreviations(Map<String, String> abbrs, String str) {
 		for (String key:abbrs.keySet()) {
 			if (str.contains(key)) {
 				str = str.replace(key, abbrs.get(key));
@@ -16,7 +16,7 @@ public class Slang {
 		return str;
 	}
 
-	public static String fixSmiles(Map<String, String> smiles, String str) {
+	public static final String fixSmiles(Map<String, String> smiles, String str) {
 		for (String key:smiles.keySet()) {
 			if (str.contains(key)) {
 				str = str.replace(key, smiles.get(key));
@@ -53,8 +53,7 @@ public class Slang {
 
 		String res = fixAbbreviations(abbrs, getInput());
 		res = fixAbbreviations(smiles, res);
-		System.out.println(res);	
-
+		System.out.println(res);
 		
 	}
 }
