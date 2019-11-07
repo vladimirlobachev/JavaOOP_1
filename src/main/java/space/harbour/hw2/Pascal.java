@@ -15,13 +15,13 @@ public final class Pascal {
 
     private static int getCoeff(final int i, final int j) {
         int res = 1;
-        int new_j = j;
+        int temp = j;
 
         if (j > i - j) {
-            new_j = i - j;
+            temp = i - j;
         }
 
-        for (int k = 0; k < new_j; k++) {
+        for (int k = 0; k < temp; k++) {
             res *= (i - k);
             res /= (k + 1);
         }
