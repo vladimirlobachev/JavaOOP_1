@@ -1,13 +1,15 @@
-public class EstimateSize {
+public final class EstimateSize {
 
-	private EstimateSize() {
+    private EstimateSize() {
 
 	}
 
-	public static final int WAIT_TIME=10;
+	public static final int WAIT_TIME = 10;
+	public static final int INT_VALUE = 100;
 
     public static long getInUse() {
-    	long inUse = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+    	long inUse = (Runtime.getRuntime().totalMemory() - 
+    		Runtime.getRuntime().freeMemory());
 	    return  inUse;
 	}
 
@@ -21,20 +23,20 @@ public class EstimateSize {
 
 	}
 
-    public static final void declareInt(long mem) {
-		int i = WAIT_TIME*10;
+    public static final void declareInt(final long mem) {
+		int i = INT_VALUE;
 		System.out.println("Size of integer: " + (getInUse() - mem));
 
 
 	}
 
-    public static final void declareString(long mem) {
+    public static final void declareString(final long mem) {
 		String str = "Hello, World!";
 		System.out.println("Size of string: " + (getInUse() - mem));
 
 	}
 
-    public static final void declareObj(long mem) {
+    public static final void declareObj(final long mem) {
 		EstimateSize obj = new EstimateSize();
 		System.out.println("Size of an object: " + (getInUse() - mem));
 
@@ -55,6 +57,5 @@ public class EstimateSize {
 
 		declareObj(getInUse());
 		gcJob();
-		
 	}
 }

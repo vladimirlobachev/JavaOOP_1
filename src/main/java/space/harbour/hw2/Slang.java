@@ -3,11 +3,13 @@ import java.util.Map;
 
 import java.util.Scanner;
 
-public class Slang {
+public final class Slang {
 
+    private Slang() {
+    	// stop
+    }
 
-
-	public static final String fixAbbreviations(Map<String, String> abbrs, String str) {
+    public static String fixAbbreviations(final Map<String, String> abbrs, final String str) {
 		for (String key:abbrs.keySet()) {
 			if (str.contains(key)) {
 				str = str.replace(key, abbrs.get(key));
@@ -16,7 +18,7 @@ public class Slang {
 		return str;
 	}
 
-	public static final String fixSmiles(Map<String, String> smiles, String str) {
+    public static final String fixSmiles(final Map<String, String> smiles, final String str) {
 		for (String key:smiles.keySet()) {
 			if (str.contains(key)) {
 				str = str.replace(key, smiles.get(key));
@@ -26,7 +28,7 @@ public class Slang {
 
 	}
 
-	public static String getInput() {
+    public static String getInput() {
 		try {
 			Scanner keyboard = new Scanner(System.in);
 			System.out.println("Enter your phrase");
@@ -54,6 +56,5 @@ public class Slang {
 		String res = fixAbbreviations(abbrs, getInput());
 		res = fixAbbreviations(smiles, res);
 		System.out.println(res);
-		
 	}
 }

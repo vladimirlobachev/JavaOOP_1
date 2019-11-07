@@ -1,7 +1,7 @@
-public class Pascal {
+public final class Pascal {
 
-	private Pascal() {
-		
+    private Pascal() {
+    	// stop thworing errors
 	}
 
     private static int getArg(String[] args) {
@@ -13,7 +13,7 @@ public class Pascal {
 		}
 	}
 
-    private static final int getCoeff(int i, int j) {
+    private static int getCoeff(final int i, final int j) {
 		int res = 1;
 
 		if (j > i - j) {
@@ -28,7 +28,7 @@ public class Pascal {
 		return res;
 	}
 
-    public static final void printPascal(int n) {
+    public static final void printPascal(final int n) {
 
 		for (int i = 0; i < n; i++) {
 			String res = "";
