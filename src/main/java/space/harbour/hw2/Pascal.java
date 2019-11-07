@@ -2,7 +2,7 @@ public final class Pascal {
 
     private Pascal() {
         // stop thworing errors
-	}
+    }
 
     private static int getArg(String[] args) {
 		try {

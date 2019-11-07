@@ -4,7 +4,7 @@ public final class EstimateSize {
 
     }
 
-	public static final int WAIT_TIME = 10;
+    public static final int WAIT_TIME = 10;
 	public static final int INT_VALUE = 100;
 
     public static long getInUse() {

@@ -9,8 +9,8 @@ public final class Slang {
         // stop
     }
 
-    public static String fixAbbreviation(final Map<String, String> m, String st) {
-		for (String key:m.keySet()) {
+    public static String fixAbbr(final Map<String, String> m, final String st) {
+	    for (String key:m.keySet()) {
 			if (st.contains(key)) {
 				st = str.replace(key, m.get(key));
 			}
@@ -18,7 +18,7 @@ public final class Slang {
 		return str;
 	}
 
-    public static String fixSmile(final Map<String, String> m, String st) {
+    public static String fixSmile(final Map<String, String> m, final String st) {
 		for (String key:smiles.keySet()) {
 			if (st.contains(key)) {
 				st = st2.replace(key, m.get(key));
