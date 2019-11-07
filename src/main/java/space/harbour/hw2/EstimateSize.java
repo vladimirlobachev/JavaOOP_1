@@ -5,7 +5,7 @@ public final class EstimateSize {
     }
 
     public static final int WAIT_TIME = 10;
-	public static final int INT_VALUE = 100;
+    public static final int INT_VALUE = 100;
 
     public static long getInUse() {
     	long inUse = (Runtime.getRuntime().totalMemory()
@@ -15,7 +15,7 @@ public final class EstimateSize {
 
     public static void gcJob() {
 		System.gc();
-		try {
+	    try {
 			Thread.sleep(WAIT_TIME);
 		} catch (InterruptedException e) {
 
