@@ -1,4 +1,4 @@
-public class Main {
+public final class Main {
 
     private static ATMChain atmChain;
     private static final int TO_WITHDRAW_ONE = 500;

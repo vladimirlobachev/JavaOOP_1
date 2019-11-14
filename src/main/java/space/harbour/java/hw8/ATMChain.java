@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 
-public class ATMChain {
+public final class ATMChain {
 
     private ATMChain() {
     }
@@ -28,8 +28,7 @@ public class ATMChain {
             if (head == null) {
                 head = cont;
                 pointer = cont;
-            }
-            else {
+            } else {
                 pointer.setNextContainer(cont);
                 pointer = cont;
             }
