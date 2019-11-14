@@ -13,7 +13,7 @@ public abstract final class AbstractContainer {
             if (nextContainer != null) {
                 nextContainer.withdraw(left);
             } else {
-            	return left;
+                return left;
             }
         } else {
             return 0;
