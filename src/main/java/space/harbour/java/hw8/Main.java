@@ -1,9 +1,9 @@
 public class Main {
 
     private static ATMChain atmChain;
-    private static final TO_WITHDRAW_ONE = 500;
-    private static final TO_WITHDRAW_TWO = 600;
-    private static final NUM_OF_CONTS = 2;
+    private static final int TO_WITHDRAW_ONE = 500;
+    private static final int TO_WITHDRAW_TWO = 600;
+    private static final int NUM_OF_CONTS = 2;
 
     private Main() { }
 
