@@ -1,4 +1,3 @@
-
 public final class Container extends AbstractContainer {
 
 
@@ -16,14 +15,17 @@ public final class Container extends AbstractContainer {
     }
 
     @Override
-    public void returnCash(final int n) {
+    public int returnCash(final int n) {
+        int iDontWantMyNToBeFinal = n;
         if (getAmountLeft() > 0) {
-            if (n >= denom) {
-                while (numberOfBills * n != 0) {
+            if (iDontWantMyNToBeFinal >= denom) {
+                while (numberOfBills * iDontWantMyNToBeFinal != 0) {
                     numberOfBills--;
-                    n -= denom;
+                    iDontWantMyNToBeFinal -= denom;
                 }
+                return iDontWantMyNToBeFinal;
             }
         }
+        return iDontWantMyNToBeFinal;
     }
 }

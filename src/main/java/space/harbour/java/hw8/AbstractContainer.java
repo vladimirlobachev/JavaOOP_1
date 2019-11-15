@@ -1,24 +1,24 @@
 
-public abstract final class AbstractContainer {
+public abstract class AbstractContainer {
 
     private AbstractContainer nextContainer;
 
+    /*
+     * A method to chain containers
+     */
     public void setNextContainer(final AbstractContainer container) {
         this.nextContainer = container;
     }
-
-    public int withdraw(final int amount) {
+    /*
+     * A method to withdraw
+     */
+    public void withdraw(final int amount) {
         int left = returnCash(amount);
         if (left != 0) {
             if (nextContainer != null) {
                 nextContainer.withdraw(left);
-            } else {
-                return left;
             }
-        } else {
-            return 0;
         }
-        return left;
     }
 
     abstract int returnCash(int n);
