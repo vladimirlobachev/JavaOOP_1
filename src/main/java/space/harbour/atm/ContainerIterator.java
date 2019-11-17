@@ -1,3 +1,5 @@
+package space.harbour.atm;
+
 public final class ContainerIterator implements Iterator<AbstractContainer> {
     private AbstractContainer[] containers;
     private int position;

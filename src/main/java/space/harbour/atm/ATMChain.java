@@ -1,18 +1,23 @@
+package space.harbour.atm;
+
+import java.util.Random;
+
 public final class ATMChain {
 
-    private static final int ARBITRARYMULT = 10;
-    private static final int ARBITRARYADD = 1;
-
-    private int numOfContainers = 0;
+    private static final int[] RAND_DENOMS =
+     new int[] {5, 10, 20, 50, 100, 200, 500};
+    private static final int[] RAND_NUMBERS = new int[] {50, 100, 200};
 
     private AbstractContainer head;
     private AbstractContainer[] containers;
 
-    public void setContainers() {
-        containers = new AbstractContainer[this.numOfContainers];
+    public void setContainers(final int numOfConts) {
+        containers = new AbstractContainer[numOfConts];
+        Random random = new Random();
         for (int i = 0; i < containers.length; i++) {
-            int arbitrary = (i + ARBITRARYADD) * ARBITRARYMULT;
-            containers[i] = new Container(arbitrary, arbitrary);
+            containers[i] =
+                new Container(RAND_DENOMS[random.nextInt(RAND_DENOMS.length)],
+                RAND_NUMBERS[random.nextInt(RAND_NUMBERS.length)]);
         }
     }
 
@@ -32,7 +37,6 @@ public final class ATMChain {
     }
 
     public void toWithdraw(final int amount) {
-        System.out.println(head == null);
         head.withdraw(amount);
     }
 
@@ -44,8 +48,7 @@ public final class ATMChain {
 
     public ATMChain setUp(final int numOfConts) {
         if (numOfConts > 0) {
-            this.numOfContainers = numOfConts;
-            setContainers();
+            setContainers(numOfConts);
             setChain();
             return this;
         } else {

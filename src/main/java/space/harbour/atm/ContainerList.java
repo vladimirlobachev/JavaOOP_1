@@ -1,3 +1,5 @@
+package space.harbour.atm;
+
 public class ContainerList implements List<AbstractContainer> {
     private AbstractContainer[] containers;
 
