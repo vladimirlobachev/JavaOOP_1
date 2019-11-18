@@ -33,16 +33,15 @@ public class MySQLAccess {
                     + "PRIMARY KEY (Title))";
 
 
-    private Connection conn = null;
-    private Statement stm = null;
+    private static Connection conn = null;
+    private static Statement stm = null;
     private PreparedStatement ps = null;
 
     private boolean connect(final String db) {
 
         try {
             Class.forName(DRIVER);
-            conn = DriverManager.getConnection(DB_URL
-             + db, USER, PASSWORD);
+            conn = DriverManager.getConnection(DB_URL + db, USER, PASSWORD);
             stm = conn.createStatement();
             return true;
         } catch (ClassNotFoundException ex) {
@@ -57,10 +56,8 @@ public class MySQLAccess {
     private boolean disconnect() {
         try {
             conn.close();
-            conn = null;
 
             stm.close();
-            stm = null;
 
             return true;
         } catch (SQLException e) {
@@ -85,27 +82,43 @@ public class MySQLAccess {
             return false;
         }
     }
+
+
+    public void deleteDB() {
+    	try {
+    		connect("Movies");
+    		stm.executeUpdate("DROP DATABASE Movies");
+    		disconnect();
+    	} catch (SQLException e) {
+    		e.printStackTrace();
+    	}
+    }
     /*
      * method to insert a movie to a Movie table
      *
      */
     public boolean insertToMovie(final Movie m) {
         if (m != null) {
-            connect("Movie");
-            ps = conn.prepareStatement("INSERT INTO Movie "
-             + "(title, length, ratings, year, director, actor, genre) "
-             + "VALUES (? ? ? ? ? ? ?)");
+            try {
+            	connect("Movies");
+	            ps = conn.prepareStatement("INSERT INTO Movie "
+	             + "(title, length, ratings, year, director, actor, genre) "
+	             + "VALUES (? ? ? ? ? ? ?)");
 
-            ps.setString(1, m.getTitle());
-            ps.setInt(2, m.getLen());
-            ps.setInt(3, m.getRatings());
-            ps.setInt(4, m.getYear());
-            ps.setString(5, m.getDirector());
-            ps.setString(6, m.getActor());
-            ps.setString(7, m.getGenre());
-            ps.executeUpdate();
-            disconnect();
-            return true;
+	            ps.setString(1, m.getTitle());
+	            ps.setInt(2, m.getLen());
+	            ps.setInt(3, m.getRatings());
+	            ps.setInt(4, m.getYear());
+	            ps.setString(5, m.getDirector());
+	            ps.setString(6, m.getActor());
+	            ps.setString(7, m.getGenre());
+	            ps.executeUpdate();
+	            disconnect();
+	            return true;
+	        } catch (SQLException e) {
+	        	e.printStackTrace();
+	        	return false;
+	        }
         }
         return false;
     }
@@ -115,20 +128,25 @@ public class MySQLAccess {
      */
     public List<Movie> selectFromMovie() {
         String query = "SELECT * FROM Movie";
-        connect("Movie");
-        ResultSet rs = stm.executeQuery(query);
-        List<Movie> lm = new ArrayList<Movie>();
-        while (rs.next()) {
-            lm.add(new Movie(rs.getString("title"),
-                                getInt("length"),
-                                getInt("ratings"),
-                                getInt("year"),
-                                getString("director"),
-                                getString("actor"),
-                                getString("genre")));
+        try {
+	        connect("Movies");
+	        ResultSet rs = stm.executeQuery(query);
+	        List<Movie> lm = new ArrayList<Movie>();
+	        while (rs.next()) {
+	            lm.add(new Movie(rs.getString("title"),
+	                                rs.getInt("length"),
+	                                rs.getInt("ratings"),
+	                                rs.getInt("year"),
+	                                rs.getString("director"),
+	                                rs.getString("actor"),
+	                                rs.getString("genre")));
+	        }
+	        disconnect();
+	        return lm;
+        } catch (SQLException e) {
+        	e.printStackTrace();
+        	return null;
         }
-        disconnect();
-        return lm;
     }
 }
 

@@ -7,22 +7,22 @@ import space.harbour.database.MySQLAccess;
 import space.harbour.movie.Movie;
 
 public class MovieTest {
-    MySQLAccess sql;
-    Movie m1;
-    Movie m2;
+    
+    static MySQLAccess sql;
+    Movie m1 = new Movie("Joker", 230, 10, 2019,
+            "Vladimir Lobachev", "Vladimir Lobachev", "comedy");
+    Movie m2 = new Movie("SpiderMEN", 230, 10, 2019,
+            "Vladimir Lobachev", "Vladimir Lobachev", "comedy");
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         sql = new MySQLAccess();
-        m1 = new Movie("Joker", 230, 10, 2019,
-            "Vladimir Lobachev", "Vladimir Lobachev", "comedy");
 
-        m2 = new Movie("SpiderMEN", 230, 10, 2019,
-            "Vladimir Lobachev", "Vladimir Lobachev", "comedy");
     }
 
     @Test
     public void setUpTest() {
+        sql.deleteDB();
         assertTrue(sql.setMovieDB());
 
     }
