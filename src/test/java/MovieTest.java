@@ -1,70 +1,43 @@
-package space.harbour.java.hw7;
-
-import org.junit.After;
-import org.junit.BeforeClass;
-import org.junit.Before;
-import org.junit.Test;
-import java.util.Arrays;
 import java.util.List;
-
+import org.junit.Test;
+import org.junit.BeforeClass;
 import static org.junit.Assert.*;
 
+import space.harbour.database.MySQLAccess;
+import space.harbour.movie.Movie;
+
 public class MovieTest {
-    static Movie m1;
-    static Movie m2;
-    static Movie m3;
-    static Movie m4;
+    MySQLAccess sql;
+    Movie m1;
+    Movie m2;
 
+    @Before
+    public void setUp() {
+        sql = new MySQLAccess();
+        m1 = new Movie("Joker", 230, 10, 2019,
+            "Vladimir Lobachev", "Vladimir Lobachev", "comedy");
 
-
-    @BeforeClass
-    public static void SetUp() throws Exception {
-        m1 = new Movie("Hello", 2019, "Vladimir Lobachev", "comedy", "Vladimir Lobachev", 180, 10);
-        m2 = new Movie("World", 2020, "John Biber", "thriller", "Tom Cruise", 210, 5);
-        m3 = new Movie("CruelWorld", 2029, "Stiven Plaza", "comdey", "Clint Eastwood", 185, 7);
-        m4 = new Movie("GoodBye", 2030, "Michal Jackson", "drama", "Josh Kraviz", 194, 8);
-    }
-
-    /*@Test
-    public void filterByDirectorTest() {
-        List<Movie> expected = Arrays.asList(m1, m3);
-        List<Movie> received = m1.filterByDirector(Arrays.asList(m1,m2,m3,m4), "ch");
-        assertArrayEquals(expected, received);
+        m2 = new Movie("SpiderMEN", 230, 10, 2019,
+            "Vladimir Lobachev", "Vladimir Lobachev", "comedy");
     }
 
     @Test
-    public void filterByActorTest() {
-        List<Movie> expected = Arrays.asList(m2);
-        List<Movie> received = m1.filterByDirector(Arrays.asList(m1,m2,m3,m4), 10);
-        assertArrayEquals(expected, received);
-    }   
+    public void setUpTest() {
+        assertTrue(sql.setMovieDB());
 
-    @Test
-    public void filterByGenreTest() {
-        List<Movie> expected = Arrays.asList(m1, m3);
-        List<Movie> received = m1.filterByDirector(Arrays.asList(m1,m2,m3,m4), "comedy");
-        assertArrayEquals(expected, received);
     }
 
     @Test
-    public void sortByLengthTest() {
-        List<Movie> expected = Arrays.asList(m1, m3, m4, m2);
-        List<Movie> received = m1.sortByLength(Arrays.asList(m1,m2,m3,m4));
-        assertArrayEquals(expected, received);
+    public void insertTest() {
+        assertTrue(sql.insertToMovie(m1));
+        assertTrue(sql.insertToMovie(m2));
     }
 
     @Test
-    public void sortByYearTest() {
-        List<Movie> expected = Arrays.asList(m1, m2, m3, m4);
-        List<Movie> received = m1.sortByYear(Arrays.asList(m1,m2,m3,m4));
-        assertArrayEquals(expected, received);
+    public void selectTest() {
+        List<Movie> lm = sql.selectFromMovie();
+        assertTrue(lm != null);
     }
 
-    @Test
-    public void sortByRatingsTest() {
-        List<Movie> expected = Arrays.asList(m2, m3, m4, m1);
-        List<Movie> received = m1.sortByRatings(Arrays.asList(m1,m2,m3,m4));
-        assertArrayEquals(expected, received);
-    }*/
 
 }

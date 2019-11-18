@@ -7,7 +7,7 @@
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>HW-06</name>
+	<name>HW-10</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,14 +27,9 @@
 		  <scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>javax.json</groupId>
-			<artifactId>javax.json-api</artifactId>
-			<version>1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>javax.json</artifactId>
-			<version>1.1</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.18</version>
 		</dependency>
 	</dependencies>
 	
@@ -62,7 +57,7 @@
 					<failsOnError>true</failsOnError>
 					<linkXRef>false</linkXRef>
 				</configuration>
-				<executions>
+				<!--executions>
 					<execution>
 						<id>validate</id>
 						<phase>validate</phase>
@@ -70,7 +65,7 @@
 							<goal>check</goal>
 						</goals>
 					</execution>
-				</executions>
+				</executions-->
 			</plugin>
 		</plugins>
 	</build>
